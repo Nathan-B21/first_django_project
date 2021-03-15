@@ -32,6 +32,8 @@ def destory(request, number):
     return redirect("/blogs")
 
 def json(request):
-    title = "My first blog"
-    content = "lorem, ipsum dolor sit amet consectetur adipisicing elit."
-    return JsonResponse(f"title: {title} content: {content}", safe=False)
+    content = {
+        'title' : 'My first blog',
+        'content' : 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'
+    }
+    return JsonResponse(content)
