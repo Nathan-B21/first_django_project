@@ -1,11 +1,20 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.http import JsonResponse
 # Create your views here.
+
 def root(request):
     return redirect("/blogs")
 
 def index(request):
-    return HttpResponse("placeholder to later display a list of all blogs")
+    context = {
+        "name": "Noelle",
+        "favorite_color": "turquoise",
+        "pets": ["Bruce", "Fitz", "Georgie"]
+    }
+    return render(request, "index.html", context)
+
+# def index(request):
+#     return HttpResponse("placeholder to later display a list of all blogs")
     
 def new(request):
     return HttpResponse("Place holder to later display a new form to create a new blog")
@@ -23,4 +32,6 @@ def destory(request, number):
     return redirect("/blogs")
 
 def json(request):
-    return JsonResponse({'Title': 'My First Blog'},{'Content' : 'Lorem, ipsum dolor sit amet consectetur adipisicing elit.'})
+    title = "My first blog"
+    content = "lorem, ipsum dolor sit amet consectetur adipisicing elit."
+    return JsonResponse(f"Title: ${title} '\n' Content: ${content}")
